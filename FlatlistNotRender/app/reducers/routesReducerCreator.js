@@ -1,5 +1,5 @@
-import store from 'store';
-import { customInitialState } from 'reducers/routes';
+import store from '../store';
+import { customInitialState } from './routes';
 
 export default (params) => {
   // merge initial state with our custom initial state

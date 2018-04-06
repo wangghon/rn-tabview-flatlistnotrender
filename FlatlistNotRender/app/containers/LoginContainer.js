@@ -8,7 +8,7 @@ import {
   Text,
 } from 'react-native';
 
-import { login } from './actions/profile';
+import { login } from '../actions/profile';
 
 @connect(
   null,
@@ -19,15 +19,23 @@ class LoginContainer extends Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
   }
-  _onLogin = () => {
+
+  _onLoginA = () => {
     this.props.login('A');
+  }
+
+  _onLoginB = () => {
+    this.props.login('B');
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={[styles.touchStyle]} onPress={this.onLogin}>
+        <TouchableOpacity style={styles.button} onPress={this.onLoginA}>
           <Text>Login as UserA</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={this.onLoginB}>
+          <Text>Login as UserB</Text>
         </TouchableOpacity>
       </View>
     );
@@ -39,6 +47,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  button: {
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 

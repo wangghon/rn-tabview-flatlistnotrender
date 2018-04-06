@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
-import LoginContainer from './containers/LoginContainer';
+import LoginContainer from '../containers/LoginContainer';
 
 class LoginScreen extends Component {
 

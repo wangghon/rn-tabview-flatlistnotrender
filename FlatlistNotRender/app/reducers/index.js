@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import routes from 'reducers/routes';
-import profile from 'reducers/profile';
+import routes from './routes';
+import profile from './profile';
 
 const appReducer = combineReducers({
   routes,
