@@ -8,34 +8,27 @@ import {
   Text,
 } from 'react-native';
 
-import { login } from '../actions/profile';
+import { logout } from '../actions/profile';
 
 @connect(
   null,
   {
-    login,
+    logout,
   })
-class LoginContainer extends Component {
+class SettingsContainer extends Component {
   static propTypes = {
-    login: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired,
   }
 
-  _onLoginA = () => {
-    this.props.login('A');
-  }
-
-  _onLoginB = () => {
-    this.props.login('B');
+  _onLogout = () => {
+    this.props.logout();
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.button} onPress={this._onLoginA}>
-          <Text>Login as UserA</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={this._onLoginB}>
-          <Text>Login as UserB</Text>
+        <TouchableOpacity style={styles.button} onPress={this._onLogout}>
+          <Text>Logout</Text>
         </TouchableOpacity>
       </View>
     );
@@ -54,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginContainer;
+export default SettingsContainer;
