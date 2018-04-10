@@ -3,14 +3,12 @@ import { View, StyleSheet } from 'react-native';
 
 import InboxContainer from '../containers/InboxContainer';
 
-import inboxItems from '../config/inbox';
-
 class InboxScreen extends Component {
 
   render() {
     return (
       <View style={styles.container}>
-        <InboxContainer items={inboxItems}/>
+        <InboxContainer />
       </View>
     );
   }

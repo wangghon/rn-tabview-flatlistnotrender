@@ -8,7 +8,7 @@ import {
   Text,
 } from 'react-native';
 
-import { login } from '../actions/profile';
+import { login } from '../actions/profileActions';
 
 @connect(
   null,

@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, View, Text, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 
-const InboxContainer = (props) => {
-  const { items } = props;
-  const renderListItem = (info) => {
+import { loadInbox } from '../actions/inboxActions';
+import { getInboxSelector } from '../selectors/inboxSelector';
+
+@connect(
+  state => ({
+    items: getInboxSelector(state),
+    profile: state.profile.data,
+  }),
+  { loadInbox }
+)
+class InboxContainer extends Component {
+
+  static propTypes = {
+    items: PropTypes.array.isRequired,
+    profile: PropTypes.object.isRequired,
+    loadInbox: PropTypes.func.isRequired,
+  };
+
+  componentDidMount() {
+    const { loadInbox, profile: { id } } = this.props;
+    loadInbox(id);
+  }
+
+  renderListItem = (info) => {
     const { item } = info;
     return (
       <View style={styles.listItem}>
@@ -13,20 +35,18 @@ const InboxContainer = (props) => {
       </View>
     );
   };
-  return (
-    <View style={styles.listContainer}>
-      <FlatList
-        style={styles.listContainer}
-        data={items}
-        renderItem={renderListItem}
-      />
-    </View>
-  );
-};
-
-InboxContainer.propTypes = {
-  items: PropTypes.array.isRequired,
-};
+  render() {
+    return (
+      <View style={styles.listContainer}>
+        <FlatList
+          style={styles.listContainer}
+          data={this.props.items}
+          renderItem={this.renderListItem}
+        />
+      </View>
+    );
+  }
+}
 
 export default InboxContainer;
 

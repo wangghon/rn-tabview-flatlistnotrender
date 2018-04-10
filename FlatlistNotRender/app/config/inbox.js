@@ -1,5 +1,5 @@
-const inboxItems =
-  [
+const inboxItems = {
+  A: [
     {
       key: '1',
       title: 'A',
@@ -15,6 +15,24 @@ const inboxItems =
       title: 'C',
       content: 'CCCCCCCCCCCCCCC',
     },
-  ];
+  ],
+  B: [
+    {
+      key: '1',
+      title: 'AB',
+      content: 'AAAAAAAAAAAAAAA',
+    },
+    {
+      key: '2',
+      title: 'Bbbbb',
+      content: 'BBBBBBBBBBBBBBB',
+    },
+    {
+      key: '3',
+      title: 'Cbbbbb',
+      content: 'CCCCCCCCCCCCCCC',
+    },
+  ],  
+};
 
 export default inboxItems;

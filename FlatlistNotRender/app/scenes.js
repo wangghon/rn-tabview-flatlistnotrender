@@ -73,8 +73,8 @@ export default Actions.create(
     <Scene key={KEY_AUTH_SWITCHER_SCREEN} hideTabBar tabs component={switcher} selector={selector} direction="vertical" type={ActionConst.RESET}>
       <Scene key={KEY_LOGIN_SCREEN} hideNavBar component={LoginScreen} title="Login" />
       <Scene key={KEY_HOME_WITH_TAB} tabs={true} tabBarStyle={styles.tabBarStyle}>
-        {createTabScene(KEY_INBOX_SCREEN, TabIcon, InboxScreen, 'Inbox')}
         {createTabScene(KEY_DELIVERIES_SCREEN, TabIcon, DeliveriesScreen, 'Deliveries')}
+        {createTabScene(KEY_INBOX_SCREEN, TabIcon, InboxScreen, 'Inbox')}
         {createTabScene(KEY_SETTINGS_SCREEN, TabIcon, SettingsScreen, 'Settings')}
       </Scene>
     </Scene>
