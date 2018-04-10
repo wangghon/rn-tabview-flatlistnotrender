@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TabViewAnimated, TabBar } from 'react-native-tab-view';
-import { Text, Platform, View } from 'react-native';
+import { Text, Platform, View, StyleSheet, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 
-import variables, { StyleSheet } from 'style';
 import InboxContainer from '../containers/InboxContainer';
-import ContactsContainer from '../containers/contacts/ContactsContainer';
-import GroupsContainer from '../containers/contacts/GroupsContainer';
+import ContactsContainer from '../containers/ContactsContainer';
+import GroupsContainer from '../containers/GroupsContainer';
 
 const layout = {
   height: 0,
-  width: variables.windowWidth,
+  width: Dimensions.get('window').width,
 };
 
 const hasGroupTab = (id) => id === 'A';
@@ -22,7 +21,7 @@ const hasGroupTab = (id) => id === 'A';
   }),
   {}
 )
-class InboxScreen extends Component {
+class TabViewScreen extends Component {
   static propTypes = {
     profile: PropTypes.object.isRequired,
     tabIndex: PropTypes.number.isRequired,
@@ -40,12 +39,12 @@ class InboxScreen extends Component {
         { key: '1', title: 'Chat', render: () => <InboxContainer /> },
         { key: '2', title: 'Contacts', render: () => <ContactsContainer />},
       ],
-      areaRep: [
+      special: [
         { key: '3', title: 'Groups', render: () => <GroupsContainer />},
       ],
     };
 
-    const groupChatTab = hasGroupTab(props.profile.id) ? this.chatTabs.areaRep : [];
+    const groupChatTab = hasGroupTab(props.profile.id) ? this.chatTabs.special : [];
     const tabs = [...this.chatTabs.normal, ...groupChatTab];
     this.state = {
       index: props.tabIndex,
@@ -64,7 +63,7 @@ class InboxScreen extends Component {
       return;
     }
 
-    const groupChatTab = hasGroupTab(id) ? this.chatTabs.areaRep : [];
+    const groupChatTab = hasGroupTab(id) ? this.chatTabs.special : [];
     const tabs = [...this.chatTabs.normal, ...groupChatTab];
     this.setState ({
       routes: [...tabs],
@@ -85,7 +84,7 @@ class InboxScreen extends Component {
       return null;
     }
 
-    const color = scene.focused === true ? variables.vividPink : variables.darkGray;
+    const color = scene.focused === true ? '#D9155D' : '#555555';
     return <Text style={[styles.labelStyle, { color }]}>{label}</Text>;
   }
 
@@ -136,4 +135,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InboxScreen;
+export default TabViewScreen;

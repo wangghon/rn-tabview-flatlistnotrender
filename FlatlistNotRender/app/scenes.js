@@ -5,8 +5,7 @@ import { ActionConst, Actions, Scene, Switch } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
 import LoginScreen from './screens/LoginScreen';
-//import TabScreen from './screens/TabScreen';
-import InboxScreen from './screens/InboxScreen';
+import TabViewScreen from './screens/TabViewScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import DeliveriesScreen from './screens/DeliveriesScreen';
 
@@ -20,6 +19,7 @@ export const KEY_LOGIN_SCREEN = 'login';
 export const KEY_INBOX_SCREEN = 'inbox';
 export const KEY_DELIVERIES_SCREEN = 'deliveries';
 export const KEY_SETTINGS_SCREEN = 'settings';
+export const KEY_TABVIEW_SCREEN = 'tabView';
 
 const styles = StyleSheet.create({
   navBar: {
@@ -74,7 +74,7 @@ export default Actions.create(
       <Scene key={KEY_LOGIN_SCREEN} hideNavBar component={LoginScreen} title="Login" />
       <Scene key={KEY_HOME_WITH_TAB} tabs={true} tabBarStyle={styles.tabBarStyle}>
         {createTabScene(KEY_DELIVERIES_SCREEN, TabIcon, DeliveriesScreen, 'Deliveries')}
-        {createTabScene(KEY_INBOX_SCREEN, TabIcon, InboxScreen, 'Inbox')}
+        {createTabScene(KEY_TABVIEW_SCREEN, TabIcon, TabViewScreen, 'Inbox')}
         {createTabScene(KEY_SETTINGS_SCREEN, TabIcon, SettingsScreen, 'Settings')}
       </Scene>
     </Scene>

@@ -1,3 +1,5 @@
+import { resetNavigationStack } from "../nav";
+
 export const login = (id) => {
   return {
     type: 'LOGIN_SUCCESS',
@@ -9,6 +11,7 @@ export const login = (id) => {
 };
 
 export const logout = () => {
+  resetNavigationStack();
   return {
     type: 'LOGOUT',
   };
