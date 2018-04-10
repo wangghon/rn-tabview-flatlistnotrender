@@ -1,20 +1,17 @@
 
 import { combineReducers } from 'redux';
-import _ from 'lodash';
-
 
 const initialState = {
-  data: {},
+  data: [],
 };
 
 function data(prevState = initialState.data, action = {}) {
 
   switch (action.type) {
-    case 'LOAD_INBOX_SUCCESS':
-      return {
-        ...prevState,
-        ..._.mapKeys(action.payload, 'title'),
-      };
+    case 'LOAD_CONTACTS_SUCCESS':
+      return [
+        ...action.payload,
+      ];
     case 'LOGOUT':
       return initialState.data;
     default:
