@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { FlatList, View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-import { loadInbox } from '../actions/inboxActions';
 import { getInboxSelector } from '../selectors/inboxSelector';
 
 @connect(
@@ -11,20 +10,14 @@ import { getInboxSelector } from '../selectors/inboxSelector';
     items: getInboxSelector(state),
     profile: state.profile.data,
   }),
-  { loadInbox }
+  {}
 )
 class InboxContainer extends Component {
 
   static propTypes = {
     items: PropTypes.array.isRequired,
     profile: PropTypes.object.isRequired,
-    loadInbox: PropTypes.func.isRequired,
   };
-
-  componentDidMount() {
-    const { loadInbox, profile: { id } } = this.props;
-    loadInbox(id);
-  }
 
   renderListItem = (info) => {
     const { item } = info;

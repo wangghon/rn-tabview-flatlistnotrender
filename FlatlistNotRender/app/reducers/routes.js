@@ -7,8 +7,8 @@ import {
   KEY_SETTINGS_SCREEN,
 } from '../scenes';
 
-const screenA = [KEY_DELIVERIES_SCREEN, KEY_TABVIEW_SCREEN, KEY_SETTINGS_SCREEN];
-const screenB = [KEY_TABVIEW_SCREEN, KEY_SETTINGS_SCREEN];
+const screenA = [KEY_SETTINGS_SCREEN, KEY_DELIVERIES_SCREEN, KEY_TABVIEW_SCREEN];
+const screenB = [KEY_SETTINGS_SCREEN, KEY_TABVIEW_SCREEN];
 
 let initialRouting;
 // needs to fake params to bypass sanity checks

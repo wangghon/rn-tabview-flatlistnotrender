@@ -4,6 +4,8 @@ import profile from './profile';
 import inbox from './inbox';
 import contacts from './contacts';
 
+import { addListeners } from '../listeners/storeListeners';
+
 const appReducer = combineReducers({
   routes,
   profile,
@@ -12,6 +14,9 @@ const appReducer = combineReducers({
 });
 
 const rootReducer = (state, action) => {
+  if (action.type === 'LOGOUT') {
+    addListeners();
+  }
   return appReducer(state, action);
 };
 
