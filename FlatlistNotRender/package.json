@@ -9,7 +9,7 @@
     "android": "react-native run-android",
     "eslint": "eslint app/",
     "dev:refresh": "rm -Rf node_modules/ && yarn",
-    "dev:cache:reset": "rm -Rf $TMPDIR/react-* && watchman watch-del-all && yarn dev:refresh && yarn start -- --reset-cache"
+    "reset": "rm -Rf $TMPDIR/react-* && watchman watch-del-all && yarn dev:refresh && yarn start -- --reset-cache"
   },
   "dependencies": {
     "lodash": "^4.17.5",
